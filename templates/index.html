@@ -6,6 +6,12 @@
 </head>
 <body>
     <form method="post" action="/add_post" name="add_post">
+        {{ if eq .Error 1 }}
+            <div>Too short message!</div>
+        {{ end }}
+        {{ if eq .Error 2}}
+            <div>Too long message!</div>
+        {{ end }}
         <div>
             <label>
                 <textarea name="post_text"></textarea>
@@ -18,7 +24,7 @@
             {{ $value.Text }}
         </div>
         <div>
-        {{ $value.Author }} (c) {{ $value.Time }}
+        {{ $value.Author }} (c) {{ $value.TimeText }}
         </div>
     {{ end }}
 </body>
