@@ -13,8 +13,8 @@ func main() {
 }
 
 func helloWorldResponse(w http.ResponseWriter, r *http.Request) {
-	log.Print("[INFO] [helloWorldResponse] Got request ", r.RequestURI ," from ", r.Host)
-	if _, err := fmt.Fprintf(w, "Hello world!"); err != nil {
+	log.Print("[INFO] [helloWorldResponse] Got request ", r.RequestURI, " from ", r.RemoteAddr)
+	if _, err := fmt.Fprintf(w, "Hello world! You are: %s", r.RemoteAddr); err != nil {
 		log.Print("[WARNING] [helloWorldResponse] ", err.Error())
 	}
 }
