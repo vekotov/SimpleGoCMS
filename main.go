@@ -8,8 +8,8 @@ import (
 
 func main() {
 	http.HandleFunc("/", helloWorldResponse)
-	log.Print("[INFO] Starting web-server at :8080 port")
-	log.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
+	log.Print("[INFO] Starting web-server at :80 port")
+	log.Fatal(http.ListenAndServe("0.0.0.0:80", nil))
 }
 
 func helloWorldResponse(w http.ResponseWriter, r *http.Request) {
