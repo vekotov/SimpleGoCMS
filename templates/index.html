@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/add_post" name="add_post">
+        <div>
+            <label>
+                <textarea name="post_text"></textarea>
+            </label>
+        </div>
+        <input type="submit" value="add_post">
+    </form>
+    {{ range $key, $value := .Posts }}
+        <div>
+            {{ $value.Text }}
+        </div>
+        <div>
+        {{ $value.Author }} (c) {{ $value.Time }}
+        </div>
+    {{ end }}
+</body>
+</html>
