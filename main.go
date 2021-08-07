@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
 	http.HandleFunc("/", helloWorldResponse)
-	log.Print("[INFO] Starting web-server at :80 port")
-	log.Fatal(http.ListenAndServe("0.0.0.0:80", nil))
+	log.Print("[INFO] Starting web-server at ", os.Getenv("PORT"), "port")
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+os.Getenv("PORT"), nil))
 }
 
 func helloWorldResponse(w http.ResponseWriter, r *http.Request) {
