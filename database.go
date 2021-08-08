@@ -35,10 +35,15 @@ func dbAddPost(post *Post) {
 }
 
 func dbCountPosts() (count int64) {
-	row := db.QueryRow("SELECT COUNT(*) FROM posts")
-	err := row.Scan(&count)
+	row, err := db.Query("SELECT COUNT(*) FROM posts")
 	if err != nil {
 		log.Print("DB ERROR: ", err.Error())
+		return
+	}
+	err = row.Scan(&count)
+	if err != nil {
+		log.Print("DB ERROR: ", err.Error())
+		return
 	}
 	return
 }
