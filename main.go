@@ -10,7 +10,8 @@ import (
 var Templates *template.Template = nil
 
 func main() {
-	testDB()
+	initDB()
+	dbLoadPosts()
 	setupDynamic()
 	setupStatic()
 	setupTemplates()

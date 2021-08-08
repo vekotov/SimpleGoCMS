@@ -18,7 +18,8 @@ func addPostResponse(w http.ResponseWriter, r *http.Request) {
 			err = 2
 		}
 		if err == 0 {
-			addPost(r.PostFormValue("post_text"), r.RemoteAddr)
+			id := addPost(r.PostFormValue("post_text"), r.RemoteAddr)
+			dbAddPost(getPosts()[id])
 		}
 	}
 	var redirectTo string
